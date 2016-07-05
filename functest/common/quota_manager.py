@@ -3,6 +3,7 @@ import utils
 import xmltodict
 import json
 import os
+import pdb
 from jcsclient import requestify 
 from jcsclient import config 
 
@@ -40,6 +41,7 @@ class QuotaManager(base_manager.BaseManager):
         params['quota']    = quota 
         if account_id is not None:
            params['account'] = 'acc-'+account_id
+        #pdb.set_trace()
         resp = requestify.make_request(self.url, self.verb,
                 self.headers, params)
         if resp is not None:

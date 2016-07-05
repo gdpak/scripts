@@ -11,7 +11,7 @@ import sys
 import requests
 def patch_make_request(url, verb, headers, params, path=None, data=None):
     return (url, verb, headers, params, path, data)
-requestify.make_request = patch_make_request
+#requestify.make_request = patch_make_request
 
 def make_request(url, verb, headers, params, path=None, data=None, config_handler=None):
     """
