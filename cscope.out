@@ -1,0 +1,5278 @@
+cscope 15 $HOME/jcs_cli/scripts -q 0000000285 0000027900
+	@EC2/check_address.py
+
+1 
+äom
+ 
+jcsş›Á
+ 
+impÜt
+ 
+şib
+
+
+2 
+impÜt
+ 
+	gun™‹¡
+
+
+4 ###U§g
+šfo
+
+
+5 ###Mak
+su»
+ 
+you
+ 
+have
+ 
+sÜûd
+ 
+İ’rc
+ 
+ªd
+
+
+6 ###you 
+have
+ 
+jcsş›Á
+ 
+š¡®Ëd
+ 
+befÜe
+
+
+7 ###¡¬tšg 
+this
+ 
+süt
+
+
+9 #Te¡ 
+ÿ£s
+:
+
+10 #1. 
+AssocŸ‹
+ 
+ª
+ 
+IP
+ 
+w™h
+ 
+®»ady
+ 
+ruÂšg
+ 
+š¡ªû
+.
+
+11 #2. 
+Try
+ 
+to
+ 
+»Ëa£
+ 
+®»ady
+ 
+assocŸ‹d
+ 
+th©
+ 
+IP
+. TryØ
+assocŸ‹
+‡Ì—dy‡ssocŸ‹d IPØ
+ªÙh”
+ 
+š¡ªû
+.
+
+12 #3. 
+T”mš©e
+ 
+In¡ªû
+. 
+Try
+ 
+to
+ 
+»
+-
+assocŸ‹
+ 
+fÜm”ly
+ 
+assocŸ‹d
+ 
+RJIL
+ 
+IP
+Ø
+ªÙh”
+ 
+š¡ªû
+.
+
+13 #4. 
+T”mš©e
+ 
+In¡ªû
+. 
+Try
+ 
+to
+ 
+»Ëa£
+ 
+fÜm”ly
+ 
+assocŸ‹d
+ 
+RJIL
+ 
+IP
+.
+
+14 #5. 
+T”mš©e
+ 
+In¡ªû
+. 
+Do
+ 
+a
+ 
+desüibe
+-
+add»s£s
+
+
+17 
+şass
+ 
+	$Add»ssTe¡
+(
+un™‹¡
+.
+Te¡Ca£
+):
+
+19 @
+şassm‘hod
+
+
+20 
+def
+ 
+	$£tUpCÏss
+(
+£lf
+):
+
+21 
+´št
+ 'calling setUP methode'
+
+22 
+£lf
+.
+vpcId
+ = 
+şib
+.
+	`»que¡
+('vpc','ü—‹-vpc', 
+cidr_block
+='172.0.0.0/16')['content']['CreateVpcResponse']['vpc']['vpcId']
+
+23 
+£lf
+.
+subÃtId
+ = 
+şib
+.
+	`»que¡
+('vpc','ü—‹-subÃt', 
+cidr_block
+='172.0.0.0/24', 
+vpc_id
+=£lf.
+vpcId
+)['content']['CreateSubnetResponse']['subnet']['subnetId']
+
+24 
+£lf
+.
+£cur™yGroupId
+ = 
+şib
+.
+	`»que¡
+('vpc','ü—‹-£cur™y-group', 
+group_Çme
+='Te¡Secur™y', 
+vpc_id
+=£lf.
+vpcId
+, 
+desütiÚ
+='Something something')['content']['CreateSecurityGroupResponse']['groupId']
+
+25 
+images
+ = 
+şib
+.
+	`»que¡
+('compute','describe-images')['content']['DescribeImagesResponse']['imagesSet']['item']
+
+26 
+image
+ 
+š
+ 
+images
+:
+
+27 
+image
+['name'] == "Ubuntu 14.04":
+
+28 
+imageId
+ = 
+image
+['imageId']
+
+29 
+»¥
+ = 
+şib
+.
+	`»que¡
+('compu‹','run-š¡ªûs',
+subÃt_id
+=
+£lf
+.
+subÃtId
+, 
+image_id
+ = 
+imageId
+ , 
+š¡ªû_ty³_id
+ = 'c1.small')
+
+30 
+£lf
+.
+š¡ªû1
+ = 
+»¥
+['content']['RunInstancesResponse']['instancesSet']['item']['instanceId']
+
+31 
+»¥
+ = 
+şib
+.
+	`»que¡
+('compu‹','run-š¡ªûs',
+subÃt_id
+=
+£lf
+.
+subÃtId
+, 
+image_id
+ = 
+imageId
+ , 
+š¡ªû_ty³_id
+ = 'c1.small')
+
+32 
+£lf
+.
+š¡ªû2
+ = 
+»¥
+['content']['RunInstancesResponse']['instancesSet']['item']['instanceId']
+
+33 
+£lf
+.
+®loc1
+=''
+
+34 
+£lf
+.
+assoc1
+=''
+
+37 @
+şassm‘hod
+
+
+38 
+def
+ 
+	$‹¬DownCÏss
+(
+£lf
+):
+
+39 
+´št
+ 'callingearDown'
+
+40 
+şib
+.
+	`»que¡
+('vpc','describe-addresses')
+
+41 
+şib
+.
+	`»que¡
+('vpc','d–‘e-£cur™y-group',
+group_id
+=
+£lf
+.
+£cur™yGroupId
+)
+
+42 
+şib
+.
+	`»que¡
+('vpc','d–‘e-subÃt',
+subÃt_id
+=
+£lf
+.
+subÃtId
+)
+
+43 
+şib
+.
+	`»que¡
+('vpc','d–‘e-vpc',
+vpc_id
+=
+£lf
+.
+vpcId
+)
+
+45 
+def
+ 
+	$‹¡1
+(
+£lf
+):
+
+46 
+´št
+ "Callingest 1"
+
+47 
+»¥
+ = 
+şib
+.
+	`»que¡
+('vpc','®loÿ‹-add»ss', 
+domaš
+='vpc')
+
+48 
+£lf
+.
+	`as£¹Equ®
+(200, 
+»¥
+['status'])
+
+49 
+£lf
+.
+®loc1
+ = 
+»¥
+['content']['AllocateAddressResponse']['allocationId']
+
+50 
+»¥
+ = 
+şib
+.
+	`»que¡
+('vpc','assocŸ‹-add»ss', 
+š¡ªû_id
+=
+£lf
+.
+š¡ªû1
+, 
+®loÿtiÚ_id
+=£lf.
+®loc1
+)
+
+51 
+£lf
+.
+	`as£¹Equ®
+(200, 
+»¥
+['status'])
+
+52 
+£lf
+.
+assoc1
+ = 
+»¥
+['content']['AssociateAddressResponse']['associationId']
+
+55 
+def
+ 
+	$‹¡2
+(
+£lf
+):
+
+56 
+´št
+ "callingest 2"
+
+57 
+»¥
+ = 
+şib
+.
+	`»que¡
+('vpc','»Ëa£-add»ss',
+®loÿtiÚ_id
+=
+£lf
+.
+®loc1
+)
+
+58 
+£lf
+.
+	`as£¹Equ®
+(400, 
+»¥
+['status'])
+
+59 
+»¥
+ = 
+şib
+.
+	`»que¡
+('vpc','assocŸ‹-add»ss', 
+š¡ªû_id
+=
+£lf
+.
+š¡ªû2
+, 
+®loÿtiÚ_id
+=£lf.
+®loc1
+ )
+
+60 
+£lf
+.
+	`as£¹Equ®
+(400, 
+»¥
+['status'])
+
+62 
+def
+ 
+	$‹¡3
+(
+£lf
+):
+
+63 
+´št
+ "Callingest 3"
+
+64 
+»¥
+ = 
+şib
+.
+	`»que¡
+('compu‹','‹rmš©e-š¡ªûs',
+š¡ªû_ids
+=
+£lf
+.
+š¡ªû1
+)
+
+65 
+£lf
+.
+	`as£¹Equ®
+(200, 
+»¥
+['status'])
+
+66 
+»¥
+ = 
+şib
+.
+	`»que¡
+('vpc','assocŸ‹-add»ss', 
+š¡ªû_id
+=
+£lf
+.
+š¡ªû2
+, 
+®loÿtiÚ_id
+=£lf.
+®loc1
+)
+
+67 
+£lf
+.
+	`as£¹Equ®
+(200, 
+»¥
+['status'])
+
+68 
+£lf
+.
+assoc1
+ = 
+»¥
+['content']['AssociateAddressResponse']['associationId']
+
+70 
+def
+ 
+	$‹¡4
+(
+£lf
+):
+
+71 
+´št
+ "callingest 4"
+
+72 
+»¥
+ = 
+şib
+.
+	`»que¡
+('compu‹','‹rmš©e-š¡ªûs',
+š¡ªû_ids
+=
+£lf
+.
+š¡ªû2
+)
+
+73 
+£lf
+.
+	`as£¹Equ®
+(200, 
+»¥
+['status'])
+
+75 
+»¥
+ = 
+şib
+.
+	`»que¡
+('vpc','»Ëa£-add»ss',
+®loÿtiÚ_id
+=
+£lf
+.
+®loc1
+)
+
+76 
+£lf
+.
+	`as£¹Equ®
+(200, 
+»¥
+['status'])
+
+79 #deà
+	`‹¡5
+():
+
+84 
+__Çme__
+ == '__main__':
+
+85 #LOG.
+	`šfo
+('Initiatingest cases: ')
+
+86 #add = 
+	`Add»ss
+()
+
+87 
+un™‹¡
+.
+	`maš
+()
+
+	@EC2/subnetTest.py
+
+1 
+äom
+ 
+jcsş›Á
+ 
+impÜt
+ 
+şib
+
+
+2 
+impÜt
+ 
+	gun™‹¡
+
+
+4 ###U§g
+šfo
+
+
+5 ###Mak
+su»
+ 
+you
+ 
+have
+ 
+sÜûd
+ 
+İ’rc
+ 
+ªd
+
+
+6 ###you 
+have
+ 
+jcsş›Á
+ 
+š¡®Ëd
+ 
+befÜe
+
+
+7 ###¡¬tšg 
+this
+ 
+süt
+
+
+9 
+şass
+ 
+	$VpcTe¡
+(
+un™‹¡
+.
+Te¡Ca£
+):
+
+10 @
+şassm‘hod
+
+
+11 
+def
+ 
+	$£tUpCÏss
+(
+£lf
+):
+
+12 
+£lf
+.
+vpcId
+ = 
+şib
+.
+	`»que¡
+('vpc','ü—‹-vpc', 
+cidr_block
+='172.0.0.0/16')['content']['CreateVpcResponse']['vpc']['vpcId']
+
+14 @
+şassm‘hod
+
+
+15 
+def
+ 
+	$‹¬DownCÏss
+(
+£lf
+):
+
+16 
+şib
+.
+	`»que¡
+('vpc','d–‘e-vpc',
+vpc_id
+=
+£lf
+.
+vpcId
+)
+
+18 
+def
+ 
+	$‹¡_lškloÿl_cidr
+(
+£lf
+):
+
+19 
+´št
+ "test†ink†ocal"
+
+20 
+»¥
+ = 
+şib
+.
+	`»que¡
+('vpc','ü—‹-subÃt', 
+vpc_id
+=
+£lf
+.
+vpcId
+, 
+cidr_block
+='169.254.0.0/16')
+
+21 
+£lf
+.
+	`as£¹Equ®
+(400, 
+»¥
+['status'])
+
+22 
+»¥
+ = 
+şib
+.
+	`»que¡
+('vpc', 'ü—‹-subÃt', 
+vpc_id
+=
+£lf
+.
+vpcId
+, 
+cidr_block
+='169.254.0.0/24')
+
+23 
+£lf
+.
+	`as£¹Equ®
+(400, 
+»¥
+['status'])
+
+26 
+def
+ 
+	$‹¡_loİback_cidr
+(
+£lf
+):
+
+27 
+´št
+ "test†oopback ip"
+
+28 
+»¥
+ = 
+şib
+.
+	`»que¡
+('vpc','ü—‹-subÃt', 
+vpc_id
+=
+£lf
+.
+vpcId
+, 
+cidr_block
+='127.0.0.0/16')
+
+29 
+£lf
+.
+	`as£¹Equ®
+(400, 
+»¥
+['status'])
+
+30 
+»¥
+ = 
+şib
+.
+	`»que¡
+('vpc','ü—‹-subÃt', 
+vpc_id
+=
+£lf
+.
+vpcId
+, 
+cidr_block
+='127.0.0.0/8')
+
+31 
+£lf
+.
+	`as£¹Equ®
+(400, 
+»¥
+['status'])
+
+32 
+»¥
+ = 
+şib
+.
+	`»que¡
+('vpc','ü—‹-subÃt', 
+vpc_id
+=
+£lf
+.
+vpcId
+, 
+cidr_block
+='127.0.0.0/25')
+
+33 
+£lf
+.
+	`as£¹Equ®
+(400, 
+»¥
+['status'])
+
+34 
+»¥
+ = 
+şib
+.
+	`»que¡
+('vpc','ü—‹-subÃt', 
+vpc_id
+=
+£lf
+.
+vpcId
+, 
+cidr_block
+='127.0.0.0/29')
+
+35 
+£lf
+.
+	`as£¹Equ®
+(400, 
+»¥
+['status'])
+
+38 
+def
+ 
+	$‹¡_»£rve_cidr
+(
+£lf
+):
+
+39 
+´št
+ "0.x.x.xest"
+
+40 
+»¥
+ = 
+şib
+.
+	`»que¡
+('vpc','ü—‹-subÃt', 
+vpc_id
+=
+£lf
+.
+vpcId
+, 
+cidr_block
+='0.0.0.0/16')
+
+41 
+£lf
+.
+	`as£¹Equ®
+(400, 
+»¥
+['status'])
+
+42 
+»¥
+ = 
+şib
+.
+	`»que¡
+('vpc','ü—‹-subÃt', 
+vpc_id
+=
+£lf
+.
+vpcId
+, 
+cidr_block
+='0.1.0.0/16')
+
+43 
+£lf
+.
+	`as£¹Equ®
+(400, 
+»¥
+['status'])
+
+44 
+»¥
+ = 
+şib
+.
+	`»que¡
+('vpc','ü—‹-subÃt', 
+vpc_id
+=
+£lf
+.
+vpcId
+, 
+cidr_block
+='0.0.0.0/8')
+
+45 
+£lf
+.
+	`as£¹Equ®
+(400, 
+»¥
+['status'])
+
+47 
+def
+ 
+	$‹¡_şass_C_D_cidr
+(
+£lf
+):
+
+48 
+´št
+ "Class C & Dest"
+
+49 
+»¥
+ = 
+şib
+.
+	`»que¡
+('vpc','ü—‹-subÃt', 
+vpc_id
+=
+£lf
+.
+vpcId
+, 
+cidr_block
+='224.0.0.0/16')
+
+50 
+£lf
+.
+	`as£¹Equ®
+(400, 
+»¥
+['status'])
+
+51 
+»¥
+ = 
+şib
+.
+	`»que¡
+('vpc','ü—‹-subÃt', 
+vpc_id
+=
+£lf
+.
+vpcId
+, 
+cidr_block
+='225.0.0.0/16')
+
+52 
+£lf
+.
+	`as£¹Equ®
+(400, 
+»¥
+['status'])
+
+53 
+»¥
+ = 
+şib
+.
+	`»que¡
+('vpc','ü—‹-subÃt', 
+vpc_id
+=
+£lf
+.
+vpcId
+, 
+cidr_block
+='224.0.0.0/8')
+
+54 
+£lf
+.
+	`as£¹Equ®
+(400, 
+»¥
+['status'])
+
+55 
+»¥
+ = 
+şib
+.
+	`»que¡
+('vpc','ü—‹-subÃt', 
+vpc_id
+=
+£lf
+.
+vpcId
+, 
+cidr_block
+='240.0.0.0/16')
+
+56 
+£lf
+.
+	`as£¹Equ®
+(400, 
+»¥
+['status'])
+
+57 
+»¥
+ = 
+şib
+.
+	`»que¡
+('vpc','ü—‹-subÃt', 
+vpc_id
+=
+£lf
+.
+vpcId
+, 
+cidr_block
+='245.0.0.0/16')
+
+58 
+£lf
+.
+	`as£¹Equ®
+(400, 
+»¥
+['status'])
+
+60 
+def
+ 
+	$‹¡_wrÚg_cidr
+(
+£lf
+):
+
+61 
+´št
+ "Wrong cidr"
+
+62 
+»¥
+ = 
+şib
+.
+	`»que¡
+('vpc','ü—‹-subÃt', 
+vpc_id
+=
+£lf
+.
+vpcId
+, 
+cidr_block
+='10.0.0.1/16')
+
+63 
+£lf
+.
+	`as£¹Equ®
+(400, 
+»¥
+['status'])
+
+64 
+»¥
+ = 
+şib
+.
+	`»que¡
+('vpc','ü—‹-subÃt', 
+vpc_id
+=
+£lf
+.
+vpcId
+, 
+cidr_block
+='10.0.1.1/16')
+
+65 
+£lf
+.
+	`as£¹Equ®
+(400, 
+»¥
+['status'])
+
+66 
+»¥
+ = 
+şib
+.
+	`»que¡
+('vpc','ü—‹-subÃt', 
+vpc_id
+=
+£lf
+.
+vpcId
+, 
+cidr_block
+='10.0.1.0/16')
+
+67 
+£lf
+.
+	`as£¹Equ®
+(400, 
+»¥
+['status'])
+
+68 
+»¥
+ = 
+şib
+.
+	`»que¡
+('vpc','ü—‹-subÃt', 
+vpc_id
+=
+£lf
+.
+vpcId
+, 
+cidr_block
+='172.168.0.1/16')
+
+69 
+£lf
+.
+	`as£¹Equ®
+(400, 
+»¥
+['status'])
+
+71 
+def
+ 
+	$‹¡_cÜ»ù_cidr
+(
+£lf
+):
+
+72 
+´št
+ "correct cidr"
+
+73 
+»¥
+ = 
+şib
+.
+	`»que¡
+('vpc','ü—‹-subÃt', 
+vpc_id
+=
+£lf
+.
+vpcId
+, 
+cidr_block
+='172.0.0.0/24')
+
+74 
+£lf
+.
+	`as£¹Equ®
+(200, 
+»¥
+['status'])
+
+75 
+subÃtId
+ğ
+»¥
+['content']['CreateSubnetResponse']['subnet']['subnetId']
+
+76 
+şib
+.
+	`»que¡
+('vpc','d–‘e-subÃt',
+subÃt_id
+=
+subÃtId
+)
+
+77 
+»¥
+ = 
+şib
+.
+	`»que¡
+('vpc','ü—‹-subÃt', 
+vpc_id
+=
+£lf
+.
+vpcId
+, 
+cidr_block
+='172.0.1.0/24')
+
+78 
+£lf
+.
+	`as£¹Equ®
+(200, 
+»¥
+['status'])
+
+79 
+subÃtId
+ğ
+»¥
+['content']['CreateSubnetResponse']['subnet']['subnetId']
+
+80 
+şib
+.
+	`»que¡
+('vpc','d–‘e-subÃt',
+subÃt_id
+=
+subÃtId
+)
+
+81 
+»¥
+ = 
+şib
+.
+	`»que¡
+('vpc','ü—‹-subÃt', 
+vpc_id
+=
+£lf
+.
+vpcId
+, 
+cidr_block
+='172.0.2.0/24')
+
+82 
+£lf
+.
+	`as£¹Equ®
+(200, 
+»¥
+['status'])
+
+83 
+subÃtId
+ğ
+»¥
+['content']['CreateSubnetResponse']['subnet']['subnetId']
+
+84 
+şib
+.
+	`»que¡
+('vpc','d–‘e-subÃt',
+subÃt_id
+=
+subÃtId
+)
+
+86 
+__Çme__
+ == '__main__':
+
+87 #LOG.
+	`šfo
+('Initiatingest cases: ')
+
+88 #add = 
+	`Add»ss
+()
+
+89 
+un™‹¡
+.
+	`maš
+()
+
+	@EC2/vpcTest.py
+
+1 
+äom
+ 
+jcsş›Á
+ 
+impÜt
+ 
+şib
+
+
+2 
+impÜt
+ 
+	gun™‹¡
+
+
+4 ###U§g
+šfo
+
+
+5 ###Mak
+su»
+ 
+you
+ 
+have
+ 
+sÜûd
+ 
+İ’rc
+ 
+ªd
+
+
+6 ###you 
+have
+ 
+jcsş›Á
+ 
+š¡®Ëd
+ 
+befÜe
+
+
+7 ###¡¬tšg 
+this
+ 
+süt
+
+
+9 
+şass
+ 
+	$VpcTe¡
+(
+un™‹¡
+.
+Te¡Ca£
+):
+
+10 
+def
+ 
+	$‹¡_lškloÿl_cidr
+(
+£lf
+):
+
+11 
+´št
+ "test†ink†ocal"
+
+12 
+»¥
+ = 
+şib
+.
+	`»que¡
+('vpc','ü—‹-vpc', 
+cidr_block
+='169.254.0.0/16')
+
+13 
+£lf
+.
+	`as£¹Equ®
+(400, 
+»¥
+['status'])
+
+14 
+»¥
+ = 
+şib
+.
+	`»que¡
+('vpc','ü—‹-vpc', 
+cidr_block
+='169.254.0.0/24')
+
+15 
+£lf
+.
+	`as£¹Equ®
+(400, 
+»¥
+['status'])
+
+17 
+def
+ 
+	$‹¡_loİback_cidr
+(
+£lf
+):
+
+18 
+´št
+ "test†oopback ip"
+
+19 
+»¥
+ = 
+şib
+.
+	`»que¡
+('vpc','ü—‹-vpc', 
+cidr_block
+='127.0.0.0/16')
+
+20 
+£lf
+.
+	`as£¹Equ®
+(400, 
+»¥
+['status'])
+
+21 
+»¥
+ = 
+şib
+.
+	`»que¡
+('vpc','ü—‹-vpc', 
+cidr_block
+='127.0.0.0/8')
+
+22 
+£lf
+.
+	`as£¹Equ®
+(400, 
+»¥
+['status'])
+
+23 
+»¥
+ = 
+şib
+.
+	`»que¡
+('vpc','ü—‹-vpc', 
+cidr_block
+='127.0.0.0/25')
+
+24 
+£lf
+.
+	`as£¹Equ®
+(400, 
+»¥
+['status'])
+
+25 
+»¥
+ = 
+şib
+.
+	`»que¡
+('vpc','ü—‹-vpc', 
+cidr_block
+='127.0.0.0/29')
+
+26 
+£lf
+.
+	`as£¹Equ®
+(400, 
+»¥
+['status'])
+
+28 
+def
+ 
+	$‹¡_»£rve_cidr
+(
+£lf
+):
+
+29 
+´št
+ "0.x.x.xest"
+
+30 
+»¥
+ = 
+şib
+.
+	`»que¡
+('vpc','ü—‹-vpc', 
+cidr_block
+='0.0.0.0/16')
+
+31 
+£lf
+.
+	`as£¹Equ®
+(400, 
+»¥
+['status'])
+
+32 
+»¥
+ = 
+şib
+.
+	`»que¡
+('vpc','ü—‹-vpc', 
+cidr_block
+='0.1.0.0/16')
+
+33 
+£lf
+.
+	`as£¹Equ®
+(400, 
+»¥
+['status'])
+
+34 
+»¥
+ = 
+şib
+.
+	`»que¡
+('vpc','ü—‹-vpc', 
+cidr_block
+='0.0.0.0/8')
+
+35 
+£lf
+.
+	`as£¹Equ®
+(400, 
+»¥
+['status'])
+
+37 
+def
+ 
+	$‹¡_şass_C_D_cidr
+(
+£lf
+):
+
+38 
+´št
+ "Class C & Dest"
+
+39 
+»¥
+ = 
+şib
+.
+	`»que¡
+('vpc','ü—‹-vpc', 
+cidr_block
+='224.0.0.0/16')
+
+40 
+£lf
+.
+	`as£¹Equ®
+(400, 
+»¥
+['status'])
+
+41 
+»¥
+ = 
+şib
+.
+	`»que¡
+('vpc','ü—‹-vpc', 
+cidr_block
+='225.0.0.0/16')
+
+42 
+£lf
+.
+	`as£¹Equ®
+(400, 
+»¥
+['status'])
+
+43 
+»¥
+ = 
+şib
+.
+	`»que¡
+('vpc','ü—‹-vpc', 
+cidr_block
+='224.0.0.0/8')
+
+44 
+£lf
+.
+	`as£¹Equ®
+(400, 
+»¥
+['status'])
+
+45 
+»¥
+ = 
+şib
+.
+	`»que¡
+('vpc','ü—‹-vpc', 
+cidr_block
+='240.0.0.0/16')
+
+46 
+£lf
+.
+	`as£¹Equ®
+(400, 
+»¥
+['status'])
+
+47 
+»¥
+ = 
+şib
+.
+	`»que¡
+('vpc','ü—‹-vpc', 
+cidr_block
+='245.0.0.0/16')
+
+48 
+£lf
+.
+	`as£¹Equ®
+(400, 
+»¥
+['status'])
+
+50 
+def
+ 
+	$‹¡_wrÚg_cidr
+(
+£lf
+):
+
+51 
+´št
+ "Wrong cidr"
+
+52 
+»¥
+ = 
+şib
+.
+	`»que¡
+('vpc','ü—‹-vpc', 
+cidr_block
+='10.0.0.1/16')
+
+53 
+£lf
+.
+	`as£¹Equ®
+(400, 
+»¥
+['status'])
+
+54 
+»¥
+ = 
+şib
+.
+	`»que¡
+('vpc','ü—‹-vpc', 
+cidr_block
+='10.0.1.1/16')
+
+55 
+£lf
+.
+	`as£¹Equ®
+(400, 
+»¥
+['status'])
+
+56 
+»¥
+ = 
+şib
+.
+	`»que¡
+('vpc','ü—‹-vpc', 
+cidr_block
+='10.0.1.0/16')
+
+57 
+£lf
+.
+	`as£¹Equ®
+(400, 
+»¥
+['status'])
+
+58 
+»¥
+ = 
+şib
+.
+	`»que¡
+('vpc','ü—‹-vpc', 
+cidr_block
+='172.168.0.1/16')
+
+59 
+£lf
+.
+	`as£¹Equ®
+(400, 
+»¥
+['status'])
+
+61 
+def
+ 
+	$‹¡_cÜ»ù_cidr
+(
+£lf
+):
+
+62 
+´št
+ "correct cidr"
+
+63 
+»¥
+ = 
+şib
+.
+	`»que¡
+('vpc','ü—‹-vpc', 
+cidr_block
+='169.253.0.0/24')
+
+64 
+£lf
+.
+	`as£¹Equ®
+(200, 
+»¥
+['status'])
+
+65 
+vpcId
+ğ
+»¥
+['content']['CreateVpcResponse']['vpc']['vpcId']
+
+66 
+şib
+.
+	`»que¡
+('vpc','d–‘e-vpc',
+vpc_id
+=
+vpcId
+)
+
+67 
+»¥
+ = 
+şib
+.
+	`»que¡
+('vpc','ü—‹-vpc', 
+cidr_block
+='169.255.0.0/24')
+
+68 
+£lf
+.
+	`as£¹Equ®
+(200, 
+»¥
+['status'])
+
+69 
+vpcId
+ğ
+»¥
+['content']['CreateVpcResponse']['vpc']['vpcId']
+
+70 
+şib
+.
+	`»que¡
+('vpc','d–‘e-vpc',
+vpc_id
+=
+vpcId
+)
+
+71 
+»¥
+ = 
+şib
+.
+	`»que¡
+('vpc','ü—‹-vpc', 
+cidr_block
+='128.0.0.0/24')
+
+72 
+£lf
+.
+	`as£¹Equ®
+(200, 
+»¥
+['status'])
+
+73 
+vpcId
+ğ
+»¥
+['content']['CreateVpcResponse']['vpc']['vpcId']
+
+74 
+şib
+.
+	`»que¡
+('vpc','d–‘e-vpc',
+vpc_id
+=
+vpcId
+)
+
+75 
+»¥
+ = 
+şib
+.
+	`»que¡
+('vpc','ü—‹-vpc', 
+cidr_block
+='10.0.0.0/24')
+
+76 
+£lf
+.
+	`as£¹Equ®
+(200, 
+»¥
+['status'])
+
+77 
+vpcId
+ğ
+»¥
+['content']['CreateVpcResponse']['vpc']['vpcId']
+
+78 
+şib
+.
+	`»que¡
+('vpc','d–‘e-vpc',
+vpc_id
+=
+vpcId
+)
+
+79 
+»¥
+ = 
+şib
+.
+	`»que¡
+('vpc','ü—‹-vpc', 
+cidr_block
+='1.0.0.0/24')
+
+80 
+£lf
+.
+	`as£¹Equ®
+(200, 
+»¥
+['status'])
+
+81 
+vpcId
+ğ
+»¥
+['content']['CreateVpcResponse']['vpc']['vpcId']
+
+82 
+şib
+.
+	`»que¡
+('vpc','d–‘e-vpc',
+vpc_id
+=
+vpcId
+)
+
+83 
+»¥
+ = 
+şib
+.
+	`»que¡
+('vpc','ü—‹-vpc', 
+cidr_block
+='223.0.0.0/24')
+
+84 
+£lf
+.
+	`as£¹Equ®
+(200, 
+»¥
+['status'])
+
+85 
+vpcId
+ğ
+»¥
+['content']['CreateVpcResponse']['vpc']['vpcId']
+
+86 
+şib
+.
+	`»que¡
+('vpc','d–‘e-vpc',
+vpc_id
+=
+vpcId
+)
+
+88 
+__Çme__
+ == '__main__':
+
+89 #LOG.
+	`šfo
+('Initiatingest cases: ')
+
+90 #add = 
+	`Add»ss
+()
+
+91 
+un™‹¡
+.
+	`maš
+()
+
+	@functest/common/__init__.py
+
+	@functest/common/address_manager.py
+
+1 
+impÜt
+ 
+ba£_mªag”
+
+
+2 
+impÜt
+ 
+uts
+
+
+4 
+şass
+ 
+	$Add»ssMªag”
+(
+ba£_mªag”
+.
+Ba£Mªag”
+):
+
+6 
+def
+ 
+	$g‘_®l_add»ss_ids
+(
+£lf
+):
+
+7 
+ids
+ = []
+
+8 
+™ems
+ = 
+NÚe
+
+
+9 
+»s
+ = 
+£lf
+.
+jş›Á
+.
+vpc
+.
+	$desüibe_add»s£s
+()
+
+10 
+Œy
+:
+
+11 
+™ems
+ = 
+uts
+.
+	`g‘_™em
+(('DesüibeAdd»s£sRe¥Ú£', 'add»s£sS‘', '™em'), 
+»s
+)
+
+12 
+exû±
+ 
+KeyE¼Ü
+ 
+as
+ 
+ex
+:
+
+13 
+·ss
+
+
+14 
+	$isš¡ªû
+(
+™ems
+, 
+li¡
+):
+
+15  [
+™em
+['®loÿtiÚId'] ™em 
+š
+ 
+™ems
+]
+
+16 
+–if
+ 
+	$isš¡ªû
+(
+™ems
+, 
+diù
+):
+
+17  [
+™ems
+['allocationId']]
+
+18  
+ids
+
+
+20 
+def
+ 
+	$d–‘e_®l_add»s£s
+(
+£lf
+):
+
+21 
+add»ss_ids
+ = 
+£lf
+.
+	$g‘_®l_add»ss_ids
+()
+
+22 
+´št
+ "......CËªšg Add»s£s: ", 
+	$Ën
+(
+add»ss_ids
+)
+
+23 
+add»ss_id
+ 
+š
+ 
+add»ss_ids
+:
+
+24 
+£lf
+.
+jş›Á
+.
+vpc
+.
+	`»Ëa£_add»ss
+(
+®loÿtiÚ_id
+=
+add»ss_id
+)
+
+	@functest/common/base_manager.py
+
+1 
+impÜt
+ 
+ş›Á
+
+
+2 
+impÜt
+ 
+un™‹¡
+
+
+4 
+şass
+ 
+	$Ba£Mªag”
+(
+objeù
+):
+
+5 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+ş›Á
+):
+
+6 
+£lf
+.
+jş›Á
+ = 
+ş›Á
+
+
+	@functest/common/client.py
+
+1 
+äom
+ 
+jcsş›Á
+ 
+impÜt
+ 
+uts
+
+
+2 
+äom
+ 
+jcsş›Á
+ 
+impÜt
+ 
+cÚfig
+
+
+3 
+äom
+ 
+jcsş›Á
+ 
+impÜt
+ 
+exû±iÚ
+
+
+4 
+impÜt
+ 
+jsÚ
+
+
+5 
+impÜt
+ 
+xmÉodiù
+
+
+6 
+impÜt
+ 
+os
+
+
+8 
+def
+ 
+	$w¿µ”
+(
+func
+):
+
+9 
+def
+ 
+	$cÚv
+(*
+¬gs
+, **
+kw¬gs
+):
+
+10 
+Ãw_¬gs
+ = [
+func
+.
+__Çme__
+.
+	`»¶aû
+('_', '-')]
+
+11 
+k
+, 
+v
+,è
+š
+ 
+kw¬gs
+.
+	$™ems
+():
+
+12 
+Ãw_¬gs
+.
+	`ex‹nd
+(['--{İtiÚ}'.
+	`fÜm©
+(
+İtiÚ
+=
+k
+.
+	`»¶aû
+('_', '-')), 
+v
+])
+
+13 
+»¥
+ = 
+	`func
+(
+	$tu¶e
+(
+Ãw_¬gs
+))
+
+14 
+»¥
+ 
+is
+ 
+nÙ
+ 
+NÚe
+:
+
+15 
+Œy
+:
+
+16 
+»¥_diù
+ = 
+jsÚ
+.
+	$lßds
+(
+»¥
+.
+cÚ‹Á
+)
+
+17 
+exû±
+:
+
+18 
+»¥_diù
+ = 
+xmÉodiù
+.
+	$·r£
+(
+»¥
+.
+cÚ‹Á
+)
+
+19 
+»¥_jsÚ
+ = 
+jsÚ
+.
+	$dumps
+(
+»¥_diù
+, 
+šd’t
+=4, 
+sÜt_keys
+=
+True
+)
+
+20 
+»¥_diù
+ = 
+jsÚ
+.
+	$lßds
+(
+»¥_jsÚ
+)
+
+21  
+»¥_diù
+
+
+22  
+cÚv
+
+
+24 
+def
+ 
+	$g‘©Œibu‹
+(
+obj
+, 
+Çme
+):
+
+25 
+©Œ
+ = 
+objeù
+.
+	$__g‘©Œibu‹__
+(
+obj
+, 
+Çme
+)
+
+26 
+	$ÿÎabË
+(
+©Œ
+):
+
+27 
+©Œ
+ = 
+	$w¿µ”
+(
+©Œ
+)
+
+28  
+©Œ
+
+
+30 
+şass
+ 
+	$Cl›ÁCÚfigHªdËr
+(
+cÚfig
+.
+CÚfigHªdËr
+):
+
+32 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+acûss_key
+ = 
+NÚe
+, 
+£ü‘_key
+ = None):
+
+33 
+Œy
+:
+
+34 
+	`su³r
+(
+Cl›ÁCÚfigHªdËr
+, 
+£lf
+).
+	$__š™__
+(
+NÚe
+)
+
+35 
+exû±
+:
+
+36 
+·ss
+
+
+37 #£lf.
+£cu»
+ = 
+F®£
+
+
+38 
+£lf
+.
+acûss_key
+ =‡cûss_key 
+Ü
+ 
+os
+.
+’vœÚ
+.
+	`g‘
+('ACCESS_KEY')
+
+39 
+£lf
+.
+£ü‘_key
+ = seü‘_key 
+Ü
+ 
+os
+.
+’vœÚ
+.
+	`g‘
+('SECRET_KEY')
+
+40 
+nÙ
+ 
+£lf
+.
+acûss_key
+ 
+Ü
+‚Ù s–f.
+£ü‘_key
+:
+
+41 
+¿i£
+ 
+exû±iÚ
+.
+	$UnknownC»d’tŸls
+()
+
+43 
+şass
+ 
+	$Cl›Á
+(
+objeù
+):
+
+45 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+acûss_key
+ = 
+NÚe
+, 
+£ü‘_key
+ = None):
+
+46 
+cÚfig
+.
+cÚfig_hªdËr
+ = 
+	$Cl›ÁCÚfigHªdËr
+(
+acûss_key
+, 
+£ü‘_key
+)
+
+47 
+vpc_£rviû_Çme
+ = 'vpc'
+
+48 
+£rviû
+ = 
+uts
+.
+	$lßd_£rviû
+(
+vpc_£rviû_Çme
+)
+
+49 
+£lf
+.
+vpc
+ = 
+uts
+.
+	$ü—‹_cÚŒŞËr
+(
+£rviû
+, 
+vpc_£rviû_Çme
+)
+
+50 
+£lf
+.
+vpc
+.
+__şass__
+.
+__g‘©Œibu‹__
+ = 
+g‘©Œibu‹
+
+
+51 
+compu‹_£rviû_Çme
+ = 'compute'
+
+52 
+£rviû
+ = 
+uts
+.
+	$lßd_£rviû
+(
+compu‹_£rviû_Çme
+)
+
+53 
+£lf
+.
+compu‹
+ = 
+uts
+.
+	$ü—‹_cÚŒŞËr
+(
+£rviû
+, 
+compu‹_£rviû_Çme
+)
+
+54 
+£lf
+.
+compu‹
+.
+__şass__
+.
+__g‘©Œibu‹__
+ = 
+g‘©Œibu‹
+
+
+	@functest/common/generic_manager.py
+
+1 
+impÜt
+ 
+ba£_mªag”
+
+
+2 
+impÜt
+ 
+vpc_mªag”
+
+
+3 
+impÜt
+ 
+subÃt_mªag”
+
+
+4 
+impÜt
+ 
+add»ss_mªag”
+
+
+5 
+impÜt
+ 
+£cur™y_group_mªag”
+
+
+7 
+şass
+ 
+	$G’”icMªag”
+(
+ba£_mªag”
+.
+Ba£Mªag”
+):
+
+9 
+def
+ 
+	$__š™__
+(
+£lf
+, *
+¬gs
+, **
+kw¬gs
+):
+
+10 
+	`su³r
+(
+G’”icMªag”
+, 
+£lf
+).
+	$__š™__
+(*
+¬gs
+, **
+kw¬gs
+)
+
+11 
+£lf
+.
+vpc_mªag”
+ = vpc_mªag”.
+	$VpcMªag”
+(
+£lf
+.
+jş›Á
+)
+
+12 
+£lf
+.
+subÃt_mªag”
+ = subÃt_mªag”.
+	$SubÃtMªag”
+(
+£lf
+.
+jş›Á
+)
+
+13 
+£lf
+.
+add»ss_mªag”
+ =‡dd»ss_mªag”.
+	$Add»ssMªag”
+(
+£lf
+.
+jş›Á
+)
+
+14 
+£lf
+.
+£cur™y_group_mªag”
+ = secur™y_group_mªag”.
+	$Secur™yGroupMªag”
+(
+£lf
+.
+jş›Á
+)
+
+16 
+def
+ 
+	$d–‘e_vpc
+(
+£lf
+, 
+vpc_id
+, 
+fÜû
+=
+F®£
+):
+
+17 
+£lf
+.
+subÃt_mªag”
+.
+	$d–‘e_®l_subÃts
+(
+vpc_id
+)
+
+18 
+£lf
+.
+£cur™y_group_mªag”
+.
+	$d–‘e_®l_£cur™y_groups
+(
+vpc_id
+)
+
+19 
+£lf
+.
+jş›Á
+.
+vpc
+.
+	`d–‘e_vpc
+(
+vpc_id
+=vpc_id)
+
+	@functest/common/quota_manager.py
+
+1 
+impÜt
+ 
+ba£_mªag”
+
+
+2 
+impÜt
+ 
+uts
+
+
+3 
+impÜt
+ 
+xmÉodiù
+
+
+4 
+impÜt
+ 
+jsÚ
+
+
+5 
+impÜt
+ 
+os
+
+
+6 
+äom
+ 
+jcsş›Á
+ 
+impÜt
+ 
+»que¡ify
+
+
+7 
+äom
+ 
+jcsş›Á
+ 
+impÜt
+ 
+cÚfig
+
+
+9 
+şass
+ 
+	$QuÙaMªag”
+(
+ba£_mªag”
+.
+Ba£Mªag”
+):
+
+11 
+def
+ 
+	$__š™__
+(
+£lf
+):
+
+12 
+£lf
+.
+u¾
+ = 
+cÚfig
+.
+	`g‘_£rviû_u¾
+('vpc')
+
+13 
+£lf
+.
+h—d”s
+ = {
+	}
+}
+
+14 
+£lf
+.
+v”siÚ
+ = '2016-03-01'
+
+15 
+£lf
+.
+v”b
+ = 'GET'
+
+17 
+def
+ 
+	$show_vpc_®l_»sourûs_quÙa
+(
+£lf
+, 
+accouÁ_id
+=
+NÚe
+):
+
+18 
+·¿ms
+ = {
+	}
+}
+
+19 
+·¿ms
+['V”siÚ']ğ
+£lf
+.
+v”siÚ
+
+
+20 
+·¿ms
+['Action'] = 'ShowQuota'
+
+21 
+accouÁ_id
+ 
+is
+ 
+nÙ
+ 
+NÚe
+:
+
+22 
+·¿ms
+['accouÁ'] = 'acc-'+
+accouÁ_id
+
+
+23 
+»¥
+ = 
+»que¡ify
+.
+	$make_»que¡
+(
+£lf
+.
+u¾
+, s–f.
+v”b
+,
+
+24 
+£lf
+.
+h—d”s
+, 
+·¿ms
+)
+
+25 
+»¥
+ 
+is
+ 
+nÙ
+ 
+NÚe
+:
+
+26 
+Œy
+:
+
+27 
+»¥_diù
+ = 
+jsÚ
+.
+	$lßds
+(
+»¥
+.
+cÚ‹Á
+)
+
+28 
+exû±
+:
+
+29 
+»¥_diù
+ = 
+xmÉodiù
+.
+	$·r£
+(
+»¥
+.
+cÚ‹Á
+)
+
+30 
+»¥_jsÚ
+ = 
+jsÚ
+.
+	$dumps
+(
+»¥_diù
+, 
+šd’t
+=4, 
+sÜt_keys
+=
+True
+)
+
+31 
+»¥_diù
+ = 
+jsÚ
+.
+	$lßds
+(
+»¥_jsÚ
+)
+
+32  
+»¥_diù
+
+
+35 
+def
+ 
+	$upd©e_vpc_»sourû_quÙa
+(
+£lf
+, 
+»sourû
+, 
+quÙa
+, 
+accouÁ_id
+=
+NÚe
+):
+
+36 
+·¿ms
+ = {
+	}
+}
+
+37 
+·¿ms
+['V”siÚ'] = 
+£lf
+.
+v”siÚ
+
+
+38 
+·¿ms
+['Action'] = 'UpdateQuota'
+
+39 
+·¿ms
+['»sourû'] = 
+»sourû
+
+
+40 
+·¿ms
+['quÙa'] = 
+quÙa
+
+
+41 
+accouÁ_id
+ 
+is
+ 
+nÙ
+ 
+NÚe
+:
+
+42 
+·¿ms
+['accouÁ'] = 'acc-'+
+accouÁ_id
+
+
+43 
+»¥
+ = 
+»que¡ify
+.
+	$make_»que¡
+(
+£lf
+.
+u¾
+, s–f.
+v”b
+,
+
+44 
+£lf
+.
+h—d”s
+, 
+·¿ms
+)
+
+45 
+»¥
+ 
+is
+ 
+nÙ
+ 
+NÚe
+:
+
+46 
+Œy
+:
+
+47 
+»¥_diù
+ = 
+jsÚ
+.
+	$lßds
+(
+»¥
+.
+cÚ‹Á
+)
+
+48 
+exû±
+:
+
+49 
+»¥_diù
+ = 
+xmÉodiù
+.
+	$·r£
+(
+»¥
+.
+cÚ‹Á
+)
+
+50 
+»¥_jsÚ
+ = 
+jsÚ
+.
+	$dumps
+(
+»¥_diù
+, 
+šd’t
+=4, 
+sÜt_keys
+=
+True
+)
+
+51 
+»¥_diù
+ = 
+jsÚ
+.
+	$lßds
+(
+»¥_jsÚ
+)
+
+52  
+»¥_diù
+
+
+	@functest/common/security_group_manager.py
+
+1 
+impÜt
+ 
+ba£_mªag”
+
+
+2 
+impÜt
+ 
+uts
+
+
+4 
+şass
+ 
+	$Secur™yGroupMªag”
+(
+ba£_mªag”
+.
+Ba£Mªag”
+):
+
+6 
+def
+ 
+	$g‘_®l_£cur™y_group_ids
+(
+£lf
+, 
+vpc_id
+, 
+šşude_deçuÉ_group
+=
+F®£
+):
+
+7 
+ids
+ = []
+
+8 
+™ems
+ = 
+NÚe
+
+
+9 
+»s
+ = 
+£lf
+.
+jş›Á
+.
+vpc
+.
+	$desüibe_£cur™y_groups
+()
+
+10 
+Œy
+:
+
+11 
+™ems
+ = 
+uts
+.
+	`g‘_™em
+(('DesüibeSecur™yGroupsRe¥Ú£', '£cur™yGroupInfo', '™em'), 
+»s
+)
+
+12 
+exû±
+ 
+KeyE¼Ü
+ 
+as
+ 
+ex
+:
+
+13 
+·ss
+
+
+14 
+	$isš¡ªû
+(
+™ems
+, 
+li¡
+):
+
+15 
+šşude_deçuÉ_group
+:
+
+16  [
+™em
+['groupId'] ™em 
+š
+ 
+™ems
+ ™em.
+	`g‘
+('vpcId'è=ğ
+vpc_id
+]
+
+18  [
+™em
+['groupId'] ™em 
+š
+ 
+™ems
+ ™em.
+	`g‘
+('vpcId'è=ğ
+vpc_id
+ item.get('groupName') != 'default']
+
+19 
+–if
+ 
+	$isš¡ªû
+(
+™ems
+, 
+diù
+):
+
+20 
+šşude_deçuÉ_group
+:
+
+21 
+™ems
+['vpcId'] =ğ
+vpc_id
+:
+
+22  [
+™ems
+['groupId']]
+
+24 
+™ems
+['vpcId'] =ğ
+vpc_id
+ 
+ªd
+ i‹ms.
+	`g‘
+('groupName') != 'default':
+
+25  [
+™ems
+['groupId']]
+
+26  
+ids
+
+
+28 
+def
+ 
+	$d–‘e_®l_£cur™y_groups
+(
+£lf
+, 
+vpc_id
+, 
+šşude_deçuÉ_group
+=
+F®£
+):
+
+29 
+ids
+ = 
+£lf
+.
+	$g‘_®l_£cur™y_group_ids
+(
+vpc_id
+, 
+šşude_deçuÉ_group
+=include_default_group)
+
+30 
+´št
+ "......CËªšg Secur™y Groups: ", 
+	$Ën
+(
+ids
+)
+
+31 
+£cg½_id
+ 
+š
+ 
+ids
+:
+
+32 
+£lf
+.
+jş›Á
+.
+vpc
+.
+	`d–‘e_£cur™y_group
+(
+group_id
+=
+£cg½_id
+)
+
+	@functest/common/subnet_manager.py
+
+1 
+impÜt
+ 
+ba£_mªag”
+
+
+2 
+impÜt
+ 
+uts
+
+
+4 
+şass
+ 
+	$SubÃtMªag”
+(
+ba£_mªag”
+.
+Ba£Mªag”
+):
+
+6 
+def
+ 
+	$g‘_®l_subÃt_ids
+(
+£lf
+, 
+vpc_id
+):
+
+7 
+ids
+ = []
+
+8 
+™ems
+ = 
+NÚe
+
+
+9 
+»s
+ = 
+£lf
+.
+jş›Á
+.
+vpc
+.
+	$desüibe_subÃts
+()
+
+10 
+Œy
+:
+
+11 
+™ems
+ = 
+uts
+.
+	`g‘_™em
+(('DesüibeSubÃtsRe¥Ú£', 'subÃtS‘', '™em'), 
+»s
+)
+
+12 
+	$exû±
+ (
+KeyE¼Ü
+, 
+A‰ribu‹E¼Ü
+è
+as
+ 
+ex
+:
+
+13 
+·ss
+
+
+14 
+	$isš¡ªû
+(
+™ems
+, 
+li¡
+):
+
+15  [
+™em
+['subÃtId'] ™em 
+š
+ 
+™ems
+ ™em.
+	`g‘
+('vpcId'è=ğ
+vpc_id
+]
+
+16 
+–if
+ 
+	$isš¡ªû
+(
+™ems
+, 
+diù
+):
+
+17 
+™ems
+['vpcId'] =ğ
+vpc_id
+:
+
+18  [
+™ems
+['subnetId']]
+
+19  
+ids
+
+
+21 
+def
+ 
+	$d–‘e_®l_subÃts
+(
+£lf
+, 
+vpc_id
+):
+
+22 
+subÃt_ids
+ = 
+£lf
+.
+	$g‘_®l_subÃt_ids
+(
+vpc_id
+)
+
+23 
+´št
+ "......CËªšg SubÃts: ", 
+	$Ën
+(
+subÃt_ids
+)
+
+24 
+subÃt_id
+ 
+š
+ 
+subÃt_ids
+:
+
+25 
+£lf
+.
+jş›Á
+.
+vpc
+.
+	`d–‘e_subÃt
+(
+subÃt_id
+=subnet_id)
+
+	@functest/common/utils.py
+
+3 
+def
+ 
+	$g‘_™em
+(
+keys
+, 
+_diù
+):
+
+4 
+»s_diù
+ = 
+	$diù
+(
+_diù
+)
+
+5 
+k
+ 
+š
+ 
+keys
+:
+
+6 
+»s_diù
+:
+
+7 
+»s_diù
+ =„es_diù.
+	$g‘
+(
+k
+)
+
+8  
+»s_diù
+
+
+	@functest/common/vpc_manager.py
+
+1 
+impÜt
+ 
+ba£_mªag”
+
+
+2 
+impÜt
+ 
+g’”ic_mªag”
+
+
+3 
+impÜt
+ 
+uts
+
+
+5 
+şass
+ 
+	$VpcMªag”
+(
+ba£_mªag”
+.
+Ba£Mªag”
+):
+
+7 
+def
+ 
+	$ü—‹_vpc
+(
+£lf
+, 
+cidr_block
+):
+
+8 
+»s
+ = 
+£lf
+.
+jş›Á
+.
+vpc
+.
+	$ü—‹_vpc
+(
+cidr_block
+=cidr_block)
+
+9 
+vpc_id
+ = 
+uts
+.
+	`g‘_™em
+(('C»©eVpcRe¥Ú£', 'vpc', 'vpcId'), 
+»s
+)
+
+10  
+vpc_id
+
+
+12 
+def
+ 
+	$g‘_®l_vpc_ids
+(
+£lf
+):
+
+13 
+ids
+ = []
+
+14 
+™ems
+ = 
+NÚe
+
+
+15 
+»s
+ = 
+£lf
+.
+jş›Á
+.
+vpc
+.
+	$desüibe_vpcs
+()
+
+16 
+Œy
+:
+
+17 
+™ems
+ = 
+uts
+.
+	`g‘_™em
+(('DesüibeVpcsRe¥Ú£', 'vpcS‘', '™em'), 
+»s
+)
+
+18 
+exû±
+ 
+KeyE¼Ü
+ 
+as
+ 
+ex
+:
+
+19 
+·ss
+
+
+20 
+	$isš¡ªû
+(
+™ems
+, 
+li¡
+):
+
+21  [
+™em
+['vpcId'] ™em 
+š
+ 
+™ems
+]
+
+22 
+–if
+ 
+	$isš¡ªû
+(
+™ems
+, 
+diù
+):
+
+23  [
+™ems
+['vpcId']]
+
+24  
+ids
+
+
+26 
+def
+ 
+	$d–‘e_®l_vpcs
+(
+£lf
+, 
+fÜû
+=
+F®£
+):
+
+27 
+vpc_ids
+ = 
+£lf
+.
+	$g‘_®l_vpc_ids
+()
+
+28 
+´št
+ "......CËªšg VPCs: ", 
+	$Ën
+(
+vpc_ids
+)
+
+29 
+vpc_id
+ 
+š
+ 
+vpc_ids
+:
+
+30 
+fÜû
+:
+
+31 
+gm
+ = 
+g’”ic_mªag”
+.
+	$G’”icMªag”
+(
+£lf
+.
+jş›Á
+)
+
+32 
+gm
+.
+	$d–‘e_vpc
+(
+vpc_id
+)
+
+34 
+£lf
+.
+jş›Á
+.
+vpc
+.
+	`d–‘e_vpc
+(
+vpc_id
+=vpc_id)
+
+	@functest/jnt_140.py
+
+1 #!/
+u¤
+/
+bš
+/
+’v
+ 
+pythÚ
+
+
+3 
+äom
+ 
+commÚ
+ 
+impÜt
+ 
+ş›Á
+
+
+4 
+äom
+ 
+commÚ
+ 
+impÜt
+ 
+vpc_mªag”
+
+
+5 
+äom
+ 
+commÚ
+ 
+impÜt
+ 
+uts
+
+
+6 
+impÜt
+ 
+Ãddr
+
+
+7 
+impÜt
+ 
+un™‹¡
+
+
+8 
+impÜt
+ 
+th»adšg
+
+
+9 
+impÜt
+ 
+£‰šgs
+
+
+11 
+şass
+ 
+	$Ov”ÏµšgVpcCidrCheck
+(
+un™‹¡
+.
+Te¡Ca£
+):
+
+13 
+def
+ 
+	$£tUp
+(
+£lf
+):
+
+14 
+£lf
+.
+jş›Á
+ = 
+ş›Á
+.
+	$Cl›Á
+()
+
+15 
+£lf
+.
+vpc_mªag”
+ = vpc_mªag”.
+	$VpcMªag”
+(
+£lf
+.
+jş›Á
+)
+
+16 
+£lf
+.
+vpc_mªag”
+.
+	$d–‘e_®l_vpcs
+(
+fÜû
+=
+True
+)
+
+17 
+£lf
+.
+vpc_id
+ = 
+NÚe
+
+
+19 
+def
+ 
+	$check_ov”Ïµšg_cidr_block
+(
+£lf
+, 
+cidr_block1
+, 
+cidr_block2
+):
+
+20 
+»s
+ = 
+£lf
+.
+jş›Á
+.
+vpc
+.
+	$ü—‹_vpc
+(
+cidr_block
+=
+cidr_block1
+)
+
+21 
+»s
+.
+	`g‘
+("Response"):
+
+22 
+£lf
+.
+	`as£¹Equ®
+(
+»s
+['Response']['Errors']['Error']['Code'], "OverlappedVpc.Range")
+
+24 
+£lf
+.
+vpc_id
+ = 
+»s
+['CreateVpcResponse']['vpc']['vpcId']
+
+25 
+»s
+ = 
+£lf
+.
+jş›Á
+.
+vpc
+.
+	$ü—‹_vpc
+(
+cidr_block
+=
+cidr_block2
+)
+
+26 
+»s
+.
+	`g‘
+("Response"):
+
+27 
+£lf
+.
+	`as£¹Equ®
+(
+»s
+['Response']['Errors']['Error']['Code'], "OverlappedVpc.Range")
+
+29 
+£lf
+.
+	`ç
+("Could‚ot findƒxpectedƒxception OverlappedVpc.Range")
+
+31 
+def
+ 
+	$‹¡_ov”Ïµšg_sub£t_cidr
+(
+£lf
+):
+
+32 
+£lf
+.
+	`check_ov”Ïµšg_cidr_block
+('11.0.0.0/16', '11.0.0.0/28')
+
+34 
+def
+ 
+	$‹¡_ov”Ïµšg_su³r£t_cidr
+(
+£lf
+):
+
+35 
+£lf
+.
+	`check_ov”Ïµšg_cidr_block
+('12.0.0.0/28', '12.0.0.0/16')
+
+37 
+def
+ 
+	$‹¬Down
+(
+£lf
+):
+
+38 
+´št
+ "......CËªšg VPC: ", 
+£lf
+.
+vpc_id
+
+
+39 
+£lf
+.
+jş›Á
+.
+vpc
+.
+	$d–‘e_vpc
+(
+vpc_id
+=
+£lf
+.vpc_id)
+
+41 
+şass
+ 
+	$CÚcu¼’cyTe¡šg
+(
+un™‹¡
+.
+Te¡Ca£
+):
+
+43 
+def
+ 
+	$£tUp
+(
+£lf
+):
+
+44 
+£lf
+.
+jş›Á
+ = 
+ş›Á
+.
+	$Cl›Á
+()
+
+45 
+£lf
+.
+vpc_mªag”
+ = vpc_mªag”.
+	$VpcMªag”
+(
+£lf
+.
+jş›Á
+)
+
+46 
+£lf
+.
+vpc_mªag”
+.
+	$d–‘e_®l_vpcs
+(
+fÜû
+=
+True
+)
+
+48 
+def
+ 
+	$check_ov”Ïp
+(
+£lf
+):
+
+49 
+»s
+ = 
+£lf
+.
+jş›Á
+.
+vpc
+.
+	$desüibe_vpcs
+()
+
+50 
+™ems
+ = 
+uts
+.
+	`g‘_™em
+(('DesüibeVpcsRe¥Ú£', 'vpcS‘', '™em'), 
+»s
+)
+
+51 
+cidr_blocks
+ = [
+™em
+['cidrBlock'] ™em 
+š
+ 
+™ems
+]
+
+52  
+	`Ën
+(
+cidr_blocks
+è=ğËn(
+	$£t
+(
+cidr_blocks
+))
+
+54 
+def
+ 
+	$‹¡_cÚ
+(
+£lf
+):
+
+55 
+cidr_block
+ = '11.0.0.0/16'
+
+56 
+Ãt
+ = 
+Ãddr
+.
+	$IPN‘wÜk
+(
+cidr_block
+)
+
+57 
+th»ads
+ = []
+
+58 
+vpc_cidr
+ 
+š
+ 
+	`li¡
+(
+Ãt
+.
+	`subÃt
+(28))[:
+£‰šgs
+.
+VPC_QUOTA
+]:
+
+59 
+th»adšg
+.
+	`Th»ad
+(
+rg‘
+=
+£lf
+.
+jş›Á
+.
+vpc
+.
+ü—‹_vpc
+, 
+kw¬gs
+={'cidr_block':
+	`¡r
+(
+vpc_cidr
+)
+	}
+}).
+	$¡¬t
+()
+
+60 
+£lf
+.
+	`as£¹True
+(£lf.
+	$check_ov”Ïp
+())
+
+62 
+def
+ 
+	$‹¬Down
+(
+£lf
+):
+
+63 
+£lf
+.
+vpc_mªag”
+.
+	$d–‘e_®l_vpcs
+()
+
+66 
+__Çme__
+ == '__main__':
+
+67 
+un™‹¡
+.
+	`maš
+()
+
+	@functest/jnt_60.py
+
+1 #!/
+u¤
+/
+bš
+/
+’v
+ 
+pythÚ
+
+
+3 
+äom
+ 
+commÚ
+ 
+impÜt
+ 
+ş›Á
+
+
+4 
+äom
+ 
+commÚ
+ 
+impÜt
+ 
+vpc_mªag”
+
+
+5 
+äom
+ 
+commÚ
+ 
+impÜt
+ 
+subÃt_mªag”
+
+
+6 
+äom
+ 
+commÚ
+ 
+impÜt
+ 
+add»ss_mªag”
+
+
+7 
+impÜt
+ 
+un™‹¡
+
+
+8 
+impÜt
+ 
+Ãddr
+
+
+9 
+impÜt
+ 
+£‰šgs
+
+
+11 
+şass
+ 
+	$VpcQuÙaCheck
+(
+un™‹¡
+.
+Te¡Ca£
+):
+
+12 
+def
+ 
+	$£tUp
+(
+£lf
+):
+
+13 
+£lf
+.
+jş›Á
+ = 
+ş›Á
+.
+	$Cl›Á
+()
+
+14 
+£lf
+.
+vpc_mªag”
+ = vpc_mªag”.
+	$VpcMªag”
+(
+£lf
+.
+jş›Á
+)
+
+16 
+def
+ 
+	$‹¡_vpc_quÙa
+(
+£lf
+):
+
+17 
+cidr_block
+ = '11.0.0.0/16'
+
+18 
+Ãt
+ = 
+Ãddr
+.
+	$IPN‘wÜk
+(
+cidr_block
+)
+
+19 
+vpc_cidr
+ 
+š
+ 
+	`li¡
+(
+Ãt
+.
+	`subÃt
+(28))[:
+£‰šgs
+.
+VPC_QUOTA
++1]:
+
+20 
+»s
+ = 
+£lf
+.
+jş›Á
+.
+vpc
+.
+	`ü—‹_vpc
+(
+cidr_block
+=
+	$¡r
+(
+vpc_cidr
+))
+
+21 
+»s
+.
+	`g‘
+("Response"):
+
+22 
+£lf
+.
+	`as£¹Equ®
+(
+»s
+['Response']['Errors']['Error']['Code'], "VpcLimitExceeded")
+
+24 
+£lf
+.
+	`ç
+("Could‚ot findƒxpectedƒxception VpcLimitExceeded")
+
+26 
+def
+ 
+	$‹¬Down
+(
+£lf
+):
+
+27 
+£lf
+.
+vpc_mªag”
+.
+	$d–‘e_®l_vpcs
+()
+
+29 
+şass
+ 
+	$SubÃtQuÙaCheck
+(
+un™‹¡
+.
+Te¡Ca£
+):
+
+30 
+def
+ 
+	$£tUp
+(
+£lf
+):
+
+31 
+£lf
+.
+jş›Á
+ = 
+ş›Á
+.
+	$Cl›Á
+()
+
+32 
+£lf
+.
+vpc_mªag”
+ = vpc_mªag”.
+	$VpcMªag”
+(
+£lf
+.
+jş›Á
+)
+
+33 
+£lf
+.
+subÃt_mªag”
+ = subÃt_mªag”.
+	$SubÃtMªag”
+(
+£lf
+.
+jş›Á
+)
+
+34 
+£lf
+.
+vpc_id
+ = 
+NÚe
+
+
+36 
+def
+ 
+	$‹¡_subÃt_quÙa
+(
+£lf
+):
+
+37 
+cidr_block
+ = '12.0.0.0/16'
+
+38 
+£lf
+.
+vpc_id
+ = s–f.
+vpc_mªag”
+.
+	$ü—‹_vpc
+(
+cidr_block
+)
+
+39 
+Ãt
+ = 
+Ãddr
+.
+	$IPN‘wÜk
+(
+cidr_block
+)
+
+40 
+subÃt_cidr
+ 
+š
+ 
+	`li¡
+(
+Ãt
+.
+	`subÃt
+(28))[:
+£‰šgs
+.
+SUBNET_QUOTA
++1]:
+
+41 
+»s
+ = 
+£lf
+.
+jş›Á
+.
+vpc
+.
+	`ü—‹_subÃt
+(
+vpc_id
+=£lf.vpc_id, 
+cidr_block
+=
+	$¡r
+(
+subÃt_cidr
+))
+
+42 
+»s
+.
+	`g‘
+("Response"):
+
+43 
+£lf
+.
+	`as£¹Equ®
+(
+»s
+['Response']['Errors']['Error']['Code'], "SubnetLimitExceeded")
+
+45 
+£lf
+.
+	`ç
+("Could‚ot findƒxpectedƒxception SubnetLimitExceeded")
+
+47 
+def
+ 
+	$‹¬Down
+(
+£lf
+):
+
+48 
+£lf
+.
+subÃt_mªag”
+.
+	$d–‘e_®l_subÃts
+(
+£lf
+.
+vpc_id
+)
+
+50 
+şass
+ 
+	$Add»ssQuÙaCheck
+(
+un™‹¡
+.
+Te¡Ca£
+):
+
+51 
+def
+ 
+	$£tUp
+(
+£lf
+):
+
+52 
+£lf
+.
+jş›Á
+ = 
+ş›Á
+.
+	$Cl›Á
+()
+
+53 
+£lf
+.
+add»ss_mªag”
+ =‡dd»ss_mªag”.
+	$Add»ssMªag”
+(
+£lf
+.
+jş›Á
+)
+
+55 
+def
+ 
+	$‹¡_add»ss_quÙa
+(
+£lf
+):
+
+56 
+x
+ 
+š
+ 
+	`¿nge
+(
+£‰šgs
+.
+ADDRESS_QUOTA
++1):
+
+57 
+»s
+ = 
+£lf
+.
+jş›Á
+.
+vpc
+.
+	`®loÿ‹_add»ss
+(
+domaš
+='vpc')
+
+58 
+»s
+.
+	`g‘
+("Response"):
+
+59 
+£lf
+.
+	`as£¹Equ®
+(
+»s
+['Response']['Errors']['Error']['Code'], "AddressLimitExceeded")
+
+61 
+£lf
+.
+	`ç
+("Could‚ot findƒxpectedƒxception AddressLimitExceeded")
+
+63 
+def
+ 
+	$‹¬Down
+(
+£lf
+):
+
+64 
+£lf
+.
+add»ss_mªag”
+.
+	$d–‘e_®l_add»s£s
+()
+
+67 
+__Çme__
+ == '__main__':
+
+68 
+un™‹¡
+.
+	`maš
+()
+
+	@functest/quota_show_update_ut.py
+
+1 #!/
+u¤
+/
+bš
+/
+’v
+ 
+pythÚ
+
+
+3 
+äom
+ 
+commÚ
+ 
+impÜt
+ 
+ş›Á
+
+
+4 
+äom
+ 
+commÚ
+ 
+impÜt
+ 
+quÙa_mªag”
+
+
+5 
+äom
+ 
+commÚ
+ 
+impÜt
+ 
+uts
+
+
+6 
+impÜt
+ 
+Ãddr
+
+
+7 
+impÜt
+ 
+un™‹¡
+
+
+8 
+impÜt
+ 
+£‰šgs
+
+
+10 
+şass
+ 
+	$ShowQuÙaCheck
+(
+un™‹¡
+.
+Te¡Ca£
+):
+
+11 
+def
+ 
+	$£tUp
+(
+£lf
+):
+
+12 
+£lf
+.
+jş›Á
+ = 
+ş›Á
+.
+	$Cl›Á
+()
+
+13 
+£lf
+.
+quÙa_mªag”
+ = quÙa_mªag”.
+	$QuÙaMªag”
+()
+
+15 
+def
+ 
+	$‹¡_check_show_quÙa_­i
+(
+£lf
+):
+
+17 #fÜ 
+which
+ 
+Acûes
+/
+Seü‘
+ 
+key
+ 
+is
+ 
+u£d
+ 
+to
+ 
+run
+ 
+this
+ 
+süt
+
+
+18 
+accouÁ_id
+ = '00000000000000000000860112177782'
+
+19 
+»¥
+ = 
+£lf
+.
+quÙa_mªag”
+.
+	$show_vpc_®l_»sourûs_quÙa
+(
+accouÁ_id
+)
+
+20 #FIXME: 
+Úû
+ 
+ÃuŒÚ
+ 
+side
+ 
+is
+ 
+fixed
+
+
+21 
+£lf
+.
+	$ç
+(
+»¥
+)
+
+23 
+def
+ 
+	$‹¬Down
+(
+£lf
+):
+
+24 
+´št
+ "......Cleaning show_quota_api_test: "
+
+26 
+şass
+ 
+	$FlßtšgIpQuÙaUpd©eCheck
+(
+un™‹¡
+.
+Te¡Ca£
+):
+
+27 
+def
+ 
+	$£tUp
+(
+£lf
+):
+
+28 
+£lf
+.
+jş›Á
+ = 
+ş›Á
+.
+	$Cl›Á
+()
+
+29 
+£lf
+.
+quÙa_mªag”
+ = quÙa_mªag”.
+	$QuÙaMªag”
+()
+
+31 
+def
+ 
+	$‹¡_check_f_quÙa_upd©e
+(
+£lf
+):
+
+33 #fÜ 
+which
+ 
+Acûes
+/
+Seü‘
+ 
+key
+ 
+is
+ 
+u£d
+ 
+to
+ 
+run
+ 
+this
+ 
+süt
+
+
+34 
+accouÁ_id
+ = '00000000000000000000860112177782'
+
+35 
+»¥
+ = 
+£lf
+.
+quÙa_mªag”
+.
+	`upd©e_vpc_»sourû_quÙa
+(
+
+38 
+accouÁ_id
+)
+
+39 #FIXME: 
+Úû
+ 
+ÃuŒÚ
+ 
+side
+ 
+is
+ 
+fixed
+
+
+40 
+£lf
+.
+	$ç
+(
+»¥
+)
+
+42 
+def
+ 
+	$‹¬Down
+(
+£lf
+):
+
+43 
+´št
+ "...... Update quota backo default : "
+
+45 
+__Çme__
+ == '__main__':
+
+46 
+un™‹¡
+.
+	`maš
+()
+
+	@functest/settings.py
+
+1 
+	gVPC_QUOTA
+ = 10
+
+2 
+SUBNET_QUOTA
+ = 20
+
+3 
+ADDRESS_QUOTA
+ = 6
+
+	@
+1
+.
+0
+17
+468
+EC2/check_address.py
+EC2/subnetTest.py
+EC2/vpcTest.py
+functest/common/__init__.py
+functest/common/address_manager.py
+functest/common/base_manager.py
+functest/common/client.py
+functest/common/generic_manager.py
+functest/common/quota_manager.py
+functest/common/security_group_manager.py
+functest/common/subnet_manager.py
+functest/common/utils.py
+functest/common/vpc_manager.py
+functest/jnt_140.py
+functest/jnt_60.py
+functest/quota_show_update_ut.py
+functest/settings.py

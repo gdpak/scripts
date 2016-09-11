@@ -36,12 +36,12 @@ class FloatingIpQuotaUpdateCheck(unittest.TestCase):
     def test_check_fip_quota_update(self):
         #Put Account-id - for which you want to change quota
         #account_id = '00000000000000000000808463047145'
-        account_id =  '00000000000000000000043258306496'
+        account_id =  '00000000000000000000922790033446'
 	resp = self.quota_manager.update_vpc_resource_quota(
                                                  'floatingip',
-                                                 25,
+                                                 15,
                                                  account_id)
-        if resp.get('floatingip') == '25':
+        if resp.get('floatingip') == '15':
            log.info("Test: Floating-up Update: PASS");
            return
         else:
@@ -62,9 +62,9 @@ class VpcQuotaUpdateCheck(unittest.TestCase):
         account_id =  '00000000000000000000043258306496'
 	resp = self.quota_manager.update_vpc_resource_quota(
                                                  'router',
-                                                 20,
+                                                 40,
                                                  account_id)
-        if resp.get('router') == '20':
+        if resp.get('router') == '40':
            log.info("Test: VPC Update: PASS");
            return
         else:
@@ -118,17 +118,7 @@ class EniQuotaUpdateCheck(unittest.TestCase):
            self.fail(resp)
 
     def tearDown(self):
-	print "...... Update quota back to default : "
-        account_id = '00000000000000000000860112177782'
-	resp = self.quota_manager.update_vpc_resource_quota(
-                                                 'port',
-                                                 100,
-                                                 account_id)
-        if resp.get('port') == '100':
-           return
-        else:
-           print 'Failed to cleanup: ENI='+resp.get('port')
-           self.fail(resp)
+        print '...LEAVE the ENI quota unchanged ....')
 
 if __name__ == '__main__':
     unittest.main()
