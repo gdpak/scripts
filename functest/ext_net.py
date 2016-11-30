@@ -23,11 +23,11 @@ class ExtNetworkCreate(unittest.TestCase):
                                                  '15.15.15.250',
                                                  '15.15.15.1')
 
-        if resp.get('floatingip') == '15':
-           log.info("Test: Floating-up Update: PASS");
+        if resp.get('state') == 'available':
+           log.info("Test: External Network Create: PASS");
            return
         else:
-           log.error('Failed to update: FIP='+resp.get('floatingip'))
+           log.error('Failed to update: external network'+resp.get('state'))
            self.fail(resp)
 
     def tearDown(self):
