@@ -4,6 +4,7 @@ import unittest
 import logging
 import time
 import utils
+import sys
 
 ### Usage info
 ### Make sure you have sorced openrc and
@@ -45,7 +46,7 @@ class SanityTest(unittest.TestCase):
         pass
 
     def test_create_vpc(self):
-        resp = self.jclient.vpc.create_vpc(cidr_block='122.16.0.0/24')
+        resp = self.jclient.vpc.create_vpc(cidr_block='125.16.0.0/24')
         logging.info(resp)
         self.assertEqual(200, resp['status'])
         self.__class__.vpcId = resp['CreateVpcResponse']['vpc']['vpcId']
@@ -53,7 +54,7 @@ class SanityTest(unittest.TestCase):
 
     def test_create_subnet(self):
         if self.__class__.vpcId:
-            resp = self.jclient.vpc.create_subnet(vpc_id = self.vpcId, cidr_block='122.16.0.64/26')
+            resp = self.jclient.vpc.create_subnet(vpc_id = self.vpcId, cidr_block='125.16.0.64/26')
             logging.info(resp)
             self.assertEqual(200, resp['status'])
             self.__class__.subnetId = resp['CreateSubnetResponse']['subnet']['subnetId']
@@ -74,6 +75,7 @@ class SanityTest(unittest.TestCase):
 
     def test_delete_subnet(self):
         if self.__class__.subnetId :
+            time.sleep(5)
             resp = self.jclient.vpc.delete_subnet(subnet_id=self.subnetId)
             logging.info(resp)
             self.assertEqual(200, resp['status'])
@@ -182,7 +184,7 @@ class SanityTest(unittest.TestCase):
         for image in images:
             if image['name'] == "Ubuntu 14.04":
                 imageId = image['imageId']
-        resp = self.jclient.compute.run_instances(subnet_id=self.subnetId, image_id = imageId , instance_type_id = 'c1.small')
+        resp = self.jclient.compute.run_instances(subnet_id=self.subnetId, image_id = imageId , instance_type_id = 'c1.small', block_device_mappings="DeviceName=/dev/vda,DeleteOnTermination=true,VolumeSize=20")
         logging.info(resp)
 
 
@@ -204,6 +206,8 @@ class SanityTest(unittest.TestCase):
             if (time.time() - start_time) >= 300:
                 #logger and logger.error(resp)
                 logging.error('Instance in pending state')
+                self.fail('Instance stuck in pending state')
+
                 break
 
 
@@ -359,4 +363,6 @@ if __name__ == '__main__':
     test.addTest(SanityTest("test_delete_security_group"))
     test.addTest(SanityTest("test_delete_subnet"))
     test.addTest(SanityTest('test_delete_vpc'))
-    unittest.TextTestRunner(verbosity=2).run(test)
+    ret = not unittest.TextTestRunner(verbosity=2).run(test).wasSuccessful()
+    # ret = not runner.run(suite).wasSuccessful()
+    sys.exit(ret)
