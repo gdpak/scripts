@@ -7,7 +7,8 @@ import utils
 import sys
 import random
 from os import system
-
+import paramiko
+import re
 
 ### Usage info
 ### Make sure you have sorced openrc and
@@ -39,13 +40,25 @@ class SanityTest(unittest.TestCase):
         self.associateAddressId = None
         self.routeTableId = None
         self.rtbAssocId = None
-        self.publicIp = None
+        self.publicIp = '10.140.216.89'
         logging.info('Starting sanity test')
 
 
+    def get_rt_ip_status(self):
+        active = 0
+        client = paramiko.SSHClient()
+        client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+        client.connect('10.204.115.116', username='devops1', password='vpc19082013')
+        stdin, stdout, stderr = client.exec_command('show route '+self.publicIp+' detail'+ ' | grep \"Protocol next hop\"')
+        for line in stdout:
+            print line 
+            if re.match('\s+Protocol next hop: \d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}.*', line) !=None :
+               active = 1
+               break
+        client.close()
+        print active
+        return active
 
-
-    @classmethod
     def tearDownClass(self):
         logging.info( "Calling teardown")
         pass
@@ -318,8 +331,16 @@ class SanityTest(unittest.TestCase):
         if self.__class__.allocateAddressId :
             resp = self.jclient.vpc.associate_address(allocation_id= self.__class__.allocateAddressId , instance_id = self.__class__.instanceId1 )
             logging.info(resp)
+            if (1) :
+                start_time = time.time()
+                actual_asso = 0
+                while (actual_asso != 1) :
+                     if (self.get_rt_ip_status() == 1) :
+                        actual_asso = 1
+                logging.info('Actual Assassociation took'+ str(time.time() - start_time))
             self.assertEqual(200, resp['status'])
             self.__class__.associateAddressId = resp['AssociateAddressResponse']['associationId']
+
         else:
             self.fail('Address not allcoated')
 
@@ -332,12 +353,17 @@ class SanityTest(unittest.TestCase):
         if self.__class__.allocateAddressId :
             resp = self.jclient.vpc.associate_address(allocation_id= self.__class__.allocateAddressId , instance_id = self.__class__.instanceId2 )
             logging.info(resp)
+            if (1) :
+                start_time = time.time()
+                actual_asso = 0
+                while (actual_asso != 1) :
+                     if (self.get_rt_ip_status() == 1) :
+                        actual_asso = 1
+                logging.info('Actual Assassociation took'+ str(time.time() - start_time))
             self.assertEqual(200, resp['status'])
             self.__class__.associateAddressId = resp['AssociateAddressResponse']['associationId']
         else:
             self.fail('Address not allcoated')
-
-
 
     def test_describe_address(self):
         if self.__class__.allocateAddressId :
@@ -354,10 +380,16 @@ class SanityTest(unittest.TestCase):
         if self.__class__.associateAddressId :
             resp = self.jclient.vpc.disassociate_address(association_id = self.__class__.associateAddressId )
             logging.info(resp)
+            if (1) :
+                start_time = time.time()
+                actual_dis = 0
+                while (actual_dis != 1) :
+                     if (self.get_rt_ip_status() == 0) :
+                        actual_dis = 1
+                logging.info('Actual disassociation took'+ str(time.time() - start_time))
             self.assertEqual(200, resp['status'])
         else:
             self.fail('Address not associated')
-
 
 
     def test_ping(self):
@@ -368,6 +400,7 @@ class SanityTest(unittest.TestCase):
         else:
             while (resp != 0) :
                 resp = system("ping -c 1 "+self.__class__.publicIp )
+            logging.error('Failing in ping test'+ str(time.time() - start_time))
             self.fail('Failing in ping test'+ str(time.time() - start_time))
 
 
@@ -381,9 +414,8 @@ class SanityTest(unittest.TestCase):
             while (resp == 0) :
                 resp = system("ping -c 1 "+self.__class__.publicIp )
             end_time = time.time()
+            logging.error('Disassociate Ip ping test failing for:'+ str(end_time-start_time))
             self.fail('Disassociate Ip ping test failing for:'+ str(end_time-start_time))
-
-
 
     def test_release_address(self):
         if self.__class__.allocateAddressId :
